@@ -4,6 +4,7 @@ import { MarkdownEditor } from '@/components/MarkdownEditor';
 import { ImagePreview } from '@/components/ImagePreview';
 import { ExportButton } from '@/components/ExportButton';
 import { SignatureInput } from '@/components/SignatureInput';
+import { ColorSchemeSelector } from '@/components/ColorSchemeSelector';
 
 const Index = () => {
   const [markdown, setMarkdown] = useState(`# 今日分享 ✨
@@ -19,6 +20,7 @@ const Index = () => {
 > 让生活更有仪式感 🌸`);
 
   const [signature, setSignature] = useState('Created with ❤️');
+  const [colorScheme, setColorScheme] = useState('cherry-blossom');
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50">
@@ -40,9 +42,10 @@ const Index = () => {
       </div>
 
       <div className="container mx-auto px-6 py-8">
-        {/* 签名设置 */}
-        <div className="mb-6 max-w-md">
+        {/* 设置面板 */}
+        <div className="mb-6 grid grid-cols-1 lg:grid-cols-2 gap-4 max-w-4xl">
           <SignatureInput value={signature} onChange={setSignature} />
+          <ColorSchemeSelector value={colorScheme} onChange={setColorScheme} />
         </div>
 
         {/* 主要内容区域 */}
@@ -54,7 +57,11 @@ const Index = () => {
 
           {/* 右侧预览 */}
           <div className="animate-fadeIn" style={{ animationDelay: '0.1s' }}>
-            <ImagePreview markdown={markdown} signature={signature} />
+            <ImagePreview 
+              markdown={markdown} 
+              signature={signature} 
+              colorScheme={colorScheme}
+            />
           </div>
         </div>
       </div>
