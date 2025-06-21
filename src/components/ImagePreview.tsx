@@ -1,8 +1,8 @@
-
 import React, { useEffect, useRef } from 'react';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import { Card } from '@/components/ui/card';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface ImagePreviewProps {
   markdown: string;
@@ -102,41 +102,43 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
         </p>
       </div>
       
-      <div className="flex justify-center">
-        <div 
-          id="image-content"
-          className={`relative ${getColorSchemeClasses(colorScheme)} rounded-3xl shadow-2xl overflow-hidden`}
-          style={{ width: '400px', minHeight: '500px' }}
-        >
-          {/* 装饰性背景图案 */}
-          <div className="absolute inset-0 opacity-5">
-            <div className={`absolute top-10 right-10 w-20 h-20 ${decorationColors.color1} rounded-full blur-xl`}></div>
-            <div className={`absolute bottom-20 left-10 w-16 h-16 ${decorationColors.color2} rounded-full blur-lg`}></div>
-            <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 ${decorationColors.color3} rounded-full blur-2xl`}></div>
-          </div>
-          
-          {/* 主要内容区域 */}
-          <div className="relative z-10 p-8 h-full flex flex-col">
-            <div 
-              ref={previewRef}
-              className="flex-1 font-noto text-gray-800 leading-relaxed prose prose-pink max-w-none"
-              style={{
-                fontSize: '16px',
-                lineHeight: '1.6'
-              }}
-            />
+      <ScrollArea className="h-[calc(100vh-280px)]">
+        <div className="flex justify-center">
+          <div 
+            id="image-content"
+            className={`relative ${getColorSchemeClasses(colorScheme)} rounded-3xl shadow-2xl overflow-hidden`}
+            style={{ width: '400px', minHeight: '500px' }}
+          >
+            {/* 装饰性背景图案 */}
+            <div className="absolute inset-0 opacity-5">
+              <div className={`absolute top-10 right-10 w-20 h-20 ${decorationColors.color1} rounded-full blur-xl`}></div>
+              <div className={`absolute bottom-20 left-10 w-16 h-16 ${decorationColors.color2} rounded-full blur-lg`}></div>
+              <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 ${decorationColors.color3} rounded-full blur-2xl`}></div>
+            </div>
             
-            {/* 签名区域 */}
-            <div className="mt-8 text-center">
-              <div className="inline-block px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full shadow-sm">
-                <span className="text-sm font-medium text-gray-600 font-inter">
-                  {signature}
-                </span>
+            {/* 主要内容区域 */}
+            <div className="relative z-10 p-8 h-full flex flex-col">
+              <div 
+                ref={previewRef}
+                className="flex-1 font-noto text-gray-800 leading-relaxed prose prose-pink max-w-none"
+                style={{
+                  fontSize: '16px',
+                  lineHeight: '1.6'
+                }}
+              />
+              
+              {/* 签名区域 */}
+              <div className="mt-8 text-center">
+                <div className="inline-block px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full shadow-sm">
+                  <span className="text-sm font-medium text-gray-600 font-inter">
+                    {signature}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </ScrollArea>
     </Card>
   );
 };
