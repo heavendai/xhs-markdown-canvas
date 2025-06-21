@@ -45,30 +45,6 @@ const colorSchemes = [
     name: '🥛 奶茶色',
     description: '温馨舒适',
     gradient: 'from-amber-50 via-orange-50 to-yellow-50'
-  },
-  {
-    id: 'deep-blue',
-    name: '🔵 深邃蓝',
-    description: '沉稳商务',
-    gradient: 'from-slate-100 via-blue-50 to-gray-100'
-  },
-  {
-    id: 'dark-gray',
-    name: '⚫ 炫酷黑灰',
-    description: '现代简约',
-    gradient: 'from-gray-100 via-slate-50 to-zinc-100'
-  },
-  {
-    id: 'military-green',
-    name: '🪖 军绿色',
-    description: '硬朗个性',
-    gradient: 'from-green-100 via-slate-50 to-gray-100'
-  },
-  {
-    id: 'steel-blue',
-    name: '🔧 钢铁蓝',
-    description: '工业风格',
-    gradient: 'from-blue-100 via-gray-50 to-slate-100'
   }
 ];
 

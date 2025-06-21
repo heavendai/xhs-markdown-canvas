@@ -1,8 +1,8 @@
+
 import React, { useEffect, useRef } from 'react';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import { Card } from '@/components/ui/card';
-import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface ImagePreviewProps {
   markdown: string;
@@ -31,7 +31,7 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
     }
   }, [markdown]);
 
-  function getColorSchemeClasses(scheme: string) {
+  const getColorSchemeClasses = (scheme: string) => {
     switch (scheme) {
       case 'mint-green':
         return 'bg-gradient-to-br from-green-100 via-emerald-50 to-teal-100';
@@ -43,20 +43,12 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
         return 'bg-gradient-to-br from-purple-100 via-violet-50 to-indigo-100';
       case 'milk-tea':
         return 'bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50';
-      case 'deep-blue':
-        return 'bg-gradient-to-br from-slate-100 via-blue-50 to-gray-100';
-      case 'dark-gray':
-        return 'bg-gradient-to-br from-gray-100 via-slate-50 to-zinc-100';
-      case 'military-green':
-        return 'bg-gradient-to-br from-green-100 via-slate-50 to-gray-100';
-      case 'steel-blue':
-        return 'bg-gradient-to-br from-blue-100 via-gray-50 to-slate-100';
       default: // cherry-blossom
         return 'bg-gradient-to-br from-pink-100 via-purple-50 to-indigo-100';
     }
-  }
+  };
 
-  function getDecorationColors(scheme: string) {
+  const getDecorationColors = (scheme: string) => {
     switch (scheme) {
       case 'mint-green':
         return {
@@ -88,30 +80,6 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
           color2: 'bg-orange-300',
           color3: 'bg-yellow-200'
         };
-      case 'deep-blue':
-        return {
-          color1: 'bg-slate-300',
-          color2: 'bg-blue-300',
-          color3: 'bg-gray-200'
-        };
-      case 'dark-gray':
-        return {
-          color1: 'bg-gray-300',
-          color2: 'bg-slate-300',
-          color3: 'bg-zinc-200'
-        };
-      case 'military-green':
-        return {
-          color1: 'bg-green-300',
-          color2: 'bg-slate-300',
-          color3: 'bg-gray-200'
-        };
-      case 'steel-blue':
-        return {
-          color1: 'bg-blue-300',
-          color2: 'bg-gray-300',
-          color3: 'bg-slate-200'
-        };
       default: // cherry-blossom
         return {
           color1: 'bg-pink-300',
@@ -119,13 +87,13 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
           color3: 'bg-indigo-200'
         };
     }
-  }
+  };
 
   const decorationColors = getDecorationColors(colorScheme);
 
   return (
-    <Card className="h-full p-6 bg-white/80 backdrop-blur-sm border-0 shadow-lg flex flex-col">
-      <div className="mb-4 flex-shrink-0">
+    <Card className="h-full p-6 bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+      <div className="mb-4">
         <h2 className="text-xl font-semibold font-noto text-gray-800 mb-2">
           🎨 预览效果
         </h2>
@@ -134,44 +102,40 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
         </p>
       </div>
       
-      <div className="flex-1 min-h-0">
-        <ScrollArea className="h-full">
-          <div className="flex justify-center pb-4">
+      <div className="flex justify-center">
+        <div 
+          id="image-content"
+          className={`relative ${getColorSchemeClasses(colorScheme)} rounded-3xl shadow-2xl overflow-hidden`}
+          style={{ width: '400px', minHeight: '500px' }}
+        >
+          {/* 装饰性背景图案 */}
+          <div className="absolute inset-0 opacity-5">
+            <div className={`absolute top-10 right-10 w-20 h-20 ${decorationColors.color1} rounded-full blur-xl`}></div>
+            <div className={`absolute bottom-20 left-10 w-16 h-16 ${decorationColors.color2} rounded-full blur-lg`}></div>
+            <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 ${decorationColors.color3} rounded-full blur-2xl`}></div>
+          </div>
+          
+          {/* 主要内容区域 */}
+          <div className="relative z-10 p-8 h-full flex flex-col">
             <div 
-              id="image-content"
-              className={`relative ${getColorSchemeClasses(colorScheme)} rounded-3xl shadow-2xl overflow-hidden`}
-              style={{ width: '400px', minHeight: '500px' }}
-            >
-              {/* 装饰性背景图案 */}
-              <div className="absolute inset-0 opacity-5">
-                <div className={`absolute top-10 right-10 w-20 h-20 ${decorationColors.color1} rounded-full blur-xl`}></div>
-                <div className={`absolute bottom-20 left-10 w-16 h-16 ${decorationColors.color2} rounded-full blur-lg`}></div>
-                <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 ${decorationColors.color3} rounded-full blur-2xl`}></div>
-              </div>
-              
-              {/* 主要内容区域 */}
-              <div className="relative z-10 p-8 h-full flex flex-col">
-                <div 
-                  ref={previewRef}
-                  className="flex-1 font-noto text-gray-800 leading-relaxed prose prose-pink max-w-none"
-                  style={{
-                    fontSize: '16px',
-                    lineHeight: '1.6'
-                  }}
-                />
-                
-                {/* 签名区域 */}
-                <div className="mt-8 text-center">
-                  <div className="inline-block px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full shadow-sm">
-                    <span className="text-sm font-medium text-gray-600 font-inter">
-                      {signature}
-                    </span>
-                  </div>
-                </div>
+              ref={previewRef}
+              className="flex-1 font-noto text-gray-800 leading-relaxed prose prose-pink max-w-none"
+              style={{
+                fontSize: '16px',
+                lineHeight: '1.6'
+              }}
+            />
+            
+            {/* 签名区域 */}
+            <div className="mt-8 text-center">
+              <div className="inline-block px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full shadow-sm">
+                <span className="text-sm font-medium text-gray-600 font-inter">
+                  {signature}
+                </span>
               </div>
             </div>
           </div>
-        </ScrollArea>
+        </div>
       </div>
     </Card>
   );
