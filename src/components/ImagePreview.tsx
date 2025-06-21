@@ -43,6 +43,14 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
         return 'bg-gradient-to-br from-purple-100 via-violet-50 to-indigo-100';
       case 'milk-tea':
         return 'bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50';
+      case 'deep-blue':
+        return 'bg-gradient-to-br from-slate-100 via-blue-50 to-gray-100';
+      case 'dark-gray':
+        return 'bg-gradient-to-br from-gray-100 via-slate-50 to-zinc-100';
+      case 'military-green':
+        return 'bg-gradient-to-br from-green-100 via-slate-50 to-gray-100';
+      case 'steel-blue':
+        return 'bg-gradient-to-br from-blue-100 via-gray-50 to-slate-100';
       default: // cherry-blossom
         return 'bg-gradient-to-br from-pink-100 via-purple-50 to-indigo-100';
     }
@@ -79,6 +87,30 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
           color1: 'bg-amber-300',
           color2: 'bg-orange-300',
           color3: 'bg-yellow-200'
+        };
+      case 'deep-blue':
+        return {
+          color1: 'bg-slate-300',
+          color2: 'bg-blue-300',
+          color3: 'bg-gray-200'
+        };
+      case 'dark-gray':
+        return {
+          color1: 'bg-gray-300',
+          color2: 'bg-slate-300',
+          color3: 'bg-zinc-200'
+        };
+      case 'military-green':
+        return {
+          color1: 'bg-green-300',
+          color2: 'bg-slate-300',
+          color3: 'bg-gray-200'
+        };
+      case 'steel-blue':
+        return {
+          color1: 'bg-blue-300',
+          color2: 'bg-gray-300',
+          color3: 'bg-slate-200'
         };
       default: // cherry-blossom
         return {
