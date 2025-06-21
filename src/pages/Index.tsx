@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { MarkdownEditor } from '@/components/MarkdownEditor';
 import { ImagePreview } from '@/components/ImagePreview';
@@ -19,7 +18,7 @@ const Index = () => {
 
 > 让生活更有仪式感 🌸`);
 
-  const [signature, setSignature] = useState('Created with ❤️');
+  const [signature, setSignature] = useState('熵语AI');
   const [colorScheme, setColorScheme] = useState('cherry-blossom');
 
   return (
