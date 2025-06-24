@@ -142,6 +142,16 @@
     margin-bottom: 0.5rem;
     line-height: 1.6;
     display: list-item;
+    list-style-position: outside;
+  }
+  
+  .prose ul li::marker {
+    color: theme('colors.pink.500');
+  }
+  
+  .prose ol li::marker {
+    color: theme('colors.purple.500');
+    font-weight: 600;
   }
   
   .prose strong {
