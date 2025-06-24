@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
@@ -43,6 +44,18 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
         return 'bg-gradient-to-br from-purple-100 via-violet-50 to-indigo-100';
       case 'milk-tea':
         return 'bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50';
+      case 'morandi-gray':
+        return 'bg-gradient-to-br from-gray-100 via-slate-50 to-stone-100';
+      case 'champagne-gold':
+        return 'bg-gradient-to-br from-yellow-50 via-amber-50 to-orange-50';
+      case 'sage-green':
+        return 'bg-gradient-to-br from-emerald-50 via-green-50 to-lime-50';
+      case 'dusty-rose':
+        return 'bg-gradient-to-br from-rose-100 via-pink-50 to-orange-50';
+      case 'midnight-blue':
+        return 'bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-100';
+      case 'lavender-mist':
+        return 'bg-gradient-to-br from-purple-50 via-violet-50 to-pink-50';
       default: // cherry-blossom
         return 'bg-gradient-to-br from-pink-100 via-purple-50 to-indigo-100';
     }
@@ -79,6 +92,42 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
           color1: 'bg-amber-300',
           color2: 'bg-orange-300',
           color3: 'bg-yellow-200'
+        };
+      case 'morandi-gray':
+        return {
+          color1: 'bg-gray-300',
+          color2: 'bg-slate-300',
+          color3: 'bg-stone-200'
+        };
+      case 'champagne-gold':
+        return {
+          color1: 'bg-yellow-300',
+          color2: 'bg-amber-300',
+          color3: 'bg-orange-200'
+        };
+      case 'sage-green':
+        return {
+          color1: 'bg-emerald-300',
+          color2: 'bg-green-300',
+          color3: 'bg-lime-200'
+        };
+      case 'dusty-rose':
+        return {
+          color1: 'bg-rose-300',
+          color2: 'bg-pink-300',
+          color3: 'bg-orange-200'
+        };
+      case 'midnight-blue':
+        return {
+          color1: 'bg-slate-300',
+          color2: 'bg-blue-300',
+          color3: 'bg-indigo-200'
+        };
+      case 'lavender-mist':
+        return {
+          color1: 'bg-purple-300',
+          color2: 'bg-violet-300',
+          color3: 'bg-pink-200'
         };
       default: // cherry-blossom
         return {
