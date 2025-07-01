@@ -1,5 +1,4 @@
 
-
 import React, { useEffect, useRef } from 'react';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
@@ -66,13 +65,16 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
     switch (scheme) {
       case 'mint-green':
         return {
-          h1: 'text-green-700',
-          h2: 'text-emerald-700',
-          h3: 'text-teal-700',
-          text: 'text-green-800',
-          strong: 'text-green-800',
-          blockquote: 'border-green-400 bg-green-50 text-green-800',
-          code: 'bg-green-100 text-green-700',
+          h1Color: '16 185 129', // emerald-500
+          h2Color: '5 150 105', // emerald-600
+          h3Color: '4 120 87', // emerald-700
+          textColor: '6 78 59', // emerald-800
+          strongColor: '6 95 70', // emerald-700
+          blockquoteBorder: '52 211 153', // emerald-400
+          blockquoteBg: '209 250 229', // emerald-50
+          blockquoteColor: '6 78 59', // emerald-800
+          codeBg: '167 243 208', // emerald-200
+          codeColor: '6 95 70', // emerald-700
           decoration: {
             color1: 'bg-green-300',
             color2: 'bg-emerald-300',
@@ -81,13 +83,16 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
         };
       case 'sunset-orange':
         return {
-          h1: 'text-orange-700',
-          h2: 'text-pink-700',
-          h3: 'text-yellow-700',
-          text: 'text-orange-800',
-          strong: 'text-orange-800',
-          blockquote: 'border-orange-400 bg-orange-50 text-orange-800',
-          code: 'bg-orange-100 text-orange-700',
+          h1Color: '234 88 12', // orange-600
+          h2Color: '219 39 119', // pink-600
+          h3Color: '180 83 9', // amber-600
+          textColor: '154 52 18', // orange-800
+          strongColor: '194 65 12', // orange-700
+          blockquoteBorder: '251 146 60', // orange-400
+          blockquoteBg: '255 237 213', // orange-100
+          blockquoteColor: '154 52 18', // orange-800
+          codeBg: '254 215 170', // orange-200
+          codeColor: '194 65 12', // orange-700
           decoration: {
             color1: 'bg-orange-300',
             color2: 'bg-pink-300',
@@ -96,13 +101,16 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
         };
       case 'ocean-blue':
         return {
-          h1: 'text-blue-700',
-          h2: 'text-cyan-700',
-          h3: 'text-indigo-700',
-          text: 'text-blue-800',
-          strong: 'text-blue-800',
-          blockquote: 'border-blue-400 bg-blue-50 text-blue-800',
-          code: 'bg-blue-100 text-blue-700',
+          h1Color: '37 99 235', // blue-600
+          h2Color: '8 145 178', // cyan-600
+          h3Color: '79 70 229', // indigo-600
+          textColor: '30 58 138', // blue-800
+          strongColor: '29 78 216', // blue-700
+          blockquoteBorder: '96 165 250', // blue-400
+          blockquoteBg: '219 234 254', // blue-100
+          blockquoteColor: '30 58 138', // blue-800
+          codeBg: '191 219 254', // blue-200
+          codeColor: '29 78 216', // blue-700
           decoration: {
             color1: 'bg-blue-300',
             color2: 'bg-cyan-300',
@@ -111,13 +119,16 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
         };
       case 'violet-purple':
         return {
-          h1: 'text-purple-700',
-          h2: 'text-violet-700',
-          h3: 'text-indigo-700',
-          text: 'text-purple-800',
-          strong: 'text-purple-800',
-          blockquote: 'border-purple-400 bg-purple-50 text-purple-800',
-          code: 'bg-purple-100 text-purple-700',
+          h1Color: '147 51 234', // purple-600
+          h2Color: '124 58 237', // violet-600
+          h3Color: '79 70 229', // indigo-600
+          textColor: '88 28 135', // purple-800
+          strongColor: '126 34 206', // purple-700
+          blockquoteBorder: '196 181 253', // purple-300
+          blockquoteBg: '243 232 255', // purple-100
+          blockquoteColor: '88 28 135', // purple-800
+          codeBg: '221 214 254', // purple-200
+          codeColor: '126 34 206', // purple-700
           decoration: {
             color1: 'bg-purple-300',
             color2: 'bg-violet-300',
@@ -126,13 +137,16 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
         };
       case 'milk-tea':
         return {
-          h1: 'text-amber-700',
-          h2: 'text-orange-700',
-          h3: 'text-yellow-700',
-          text: 'text-amber-800',
-          strong: 'text-amber-800',
-          blockquote: 'border-amber-400 bg-amber-50 text-amber-800',
-          code: 'bg-amber-100 text-amber-700',
+          h1Color: '217 119 6', // amber-600
+          h2Color: '234 88 12', // orange-600
+          h3Color: '161 98 7', // yellow-600
+          textColor: '146 64 14', // amber-800
+          strongColor: '180 83 9', // amber-700
+          blockquoteBorder: '251 191 36', // amber-400
+          blockquoteBg: '254 243 199', // amber-100
+          blockquoteColor: '146 64 14', // amber-800
+          codeBg: '253 230 138', // amber-200
+          codeColor: '180 83 9', // amber-700
           decoration: {
             color1: 'bg-amber-300',
             color2: 'bg-orange-300',
@@ -141,13 +155,16 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
         };
       case 'morandi-gray':
         return {
-          h1: 'text-gray-700',
-          h2: 'text-slate-700',
-          h3: 'text-stone-700',
-          text: 'text-gray-800',
-          strong: 'text-gray-800',
-          blockquote: 'border-gray-400 bg-gray-50 text-gray-800',
-          code: 'bg-gray-100 text-gray-700',
+          h1Color: '75 85 99', // gray-600
+          h2Color: '71 85 105', // slate-600
+          h3Color: '87 83 78', // stone-600
+          textColor: '31 41 55', // gray-800
+          strongColor: '55 65 81', // gray-700
+          blockquoteBorder: '156 163 175', // gray-400
+          blockquoteBg: '243 244 246', // gray-100
+          blockquoteColor: '31 41 55', // gray-800
+          codeBg: '229 231 235', // gray-200
+          codeColor: '55 65 81', // gray-700
           decoration: {
             color1: 'bg-gray-300',
             color2: 'bg-slate-300',
@@ -156,13 +173,16 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
         };
       case 'champagne-gold':
         return {
-          h1: 'text-yellow-700',
-          h2: 'text-amber-700',
-          h3: 'text-orange-700',
-          text: 'text-yellow-800',
-          strong: 'text-yellow-800',
-          blockquote: 'border-yellow-400 bg-yellow-50 text-yellow-800',
-          code: 'bg-yellow-100 text-yellow-700',
+          h1Color: '161 98 7', // yellow-600
+          h2Color: '217 119 6', // amber-600
+          h3Color: '234 88 12', // orange-600
+          textColor: '133 77 14', // yellow-800
+          strongColor: '161 98 7', // yellow-700
+          blockquoteBorder: '250 204 21', // yellow-400
+          blockquoteBg: '254 249 195', // yellow-100
+          blockquoteColor: '133 77 14', // yellow-800
+          codeBg: '254 240 138', // yellow-200
+          codeColor: '161 98 7', // yellow-700
           decoration: {
             color1: 'bg-yellow-300',
             color2: 'bg-amber-300',
@@ -171,13 +191,16 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
         };
       case 'sage-green':
         return {
-          h1: 'text-emerald-700',
-          h2: 'text-green-700',
-          h3: 'text-lime-700',
-          text: 'text-emerald-800',
-          strong: 'text-emerald-800',
-          blockquote: 'border-emerald-400 bg-emerald-50 text-emerald-800',
-          code: 'bg-emerald-100 text-emerald-700',
+          h1Color: '5 150 105', // emerald-600
+          h2Color: '22 163 74', // green-600
+          h3Color: '101 163 13', // lime-600
+          textColor: '6 78 59', // emerald-800
+          strongColor: '20 83 45', // emerald-700
+          blockquoteBorder: '52 211 153', // emerald-400
+          blockquoteBg: '209 250 229', // emerald-100
+          blockquoteColor: '6 78 59', // emerald-800
+          codeBg: '167 243 208', // emerald-200
+          codeColor: '20 83 45', // emerald-700
           decoration: {
             color1: 'bg-emerald-300',
             color2: 'bg-green-300',
@@ -186,13 +209,16 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
         };
       case 'dusty-rose':
         return {
-          h1: 'text-rose-700',
-          h2: 'text-pink-700',
-          h3: 'text-orange-700',
-          text: 'text-rose-800',
-          strong: 'text-rose-800',
-          blockquote: 'border-rose-400 bg-rose-50 text-rose-800',
-          code: 'bg-rose-100 text-rose-700',
+          h1Color: '225 29 72', // rose-600
+          h2Color: '219 39 119', // pink-600
+          h3Color: '234 88 12', // orange-600
+          textColor: '159 18 57', // rose-800
+          strongColor: '190 18 60', // rose-700
+          blockquoteBorder: '251 113 133', // rose-400
+          blockquoteBg: '255 228 230', // rose-100
+          blockquoteColor: '159 18 57', // rose-800
+          codeBg: '254 205 211', // rose-200
+          codeColor: '190 18 60', // rose-700
           decoration: {
             color1: 'bg-rose-300',
             color2: 'bg-pink-300',
@@ -201,13 +227,16 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
         };
       case 'midnight-blue':
         return {
-          h1: 'text-slate-700',
-          h2: 'text-blue-700',
-          h3: 'text-indigo-700',
-          text: 'text-slate-800',
-          strong: 'text-slate-800',
-          blockquote: 'border-slate-400 bg-slate-50 text-slate-800',
-          code: 'bg-slate-100 text-slate-700',
+          h1Color: '71 85 105', // slate-600
+          h2Color: '37 99 235', // blue-600
+          h3Color: '79 70 229', // indigo-600
+          textColor: '30 41 59', // slate-800
+          strongColor: '51 65 85', // slate-700
+          blockquoteBorder: '148 163 184', // slate-400
+          blockquoteBg: '241 245 249', // slate-100
+          blockquoteColor: '30 41 59', // slate-800
+          codeBg: '226 232 240', // slate-200
+          codeColor: '51 65 85', // slate-700
           decoration: {
             color1: 'bg-slate-300',
             color2: 'bg-blue-300',
@@ -216,13 +245,16 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
         };
       case 'lavender-mist':
         return {
-          h1: 'text-purple-700',
-          h2: 'text-violet-700',
-          h3: 'text-pink-700',
-          text: 'text-purple-800',
-          strong: 'text-purple-800',
-          blockquote: 'border-purple-400 bg-purple-50 text-purple-800',
-          code: 'bg-purple-100 text-purple-700',
+          h1Color: '147 51 234', // purple-600
+          h2Color: '124 58 237', // violet-600
+          h3Color: '219 39 119', // pink-600
+          textColor: '88 28 135', // purple-800
+          strongColor: '126 34 206', // purple-700
+          blockquoteBorder: '196 181 253', // purple-300
+          blockquoteBg: '243 232 255', // purple-100
+          blockquoteColor: '88 28 135', // purple-800
+          codeBg: '221 214 254', // purple-200
+          codeColor: '126 34 206', // purple-700
           decoration: {
             color1: 'bg-purple-300',
             color2: 'bg-violet-300',
@@ -231,13 +263,16 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
         };
       default: // cherry-blossom
         return {
-          h1: 'text-pink-700',
-          h2: 'text-purple-700',
-          h3: 'text-indigo-700',
-          text: 'text-pink-800',
-          strong: 'text-pink-800',
-          blockquote: 'border-pink-400 bg-pink-50 text-pink-800',
-          code: 'bg-pink-100 text-pink-700',
+          h1Color: '219 39 119', // pink-600
+          h2Color: '147 51 234', // purple-600
+          h3Color: '79 70 229', // indigo-600
+          textColor: '157 23 77', // pink-800
+          strongColor: '190 24 93', // pink-700
+          blockquoteBorder: '244 114 182', // pink-400
+          blockquoteBg: '253 242 248', // pink-100
+          blockquoteColor: '157 23 77', // pink-800
+          codeBg: '252 231 243', // pink-200
+          codeColor: '190 24 93', // pink-700
           decoration: {
             color1: 'bg-pink-300',
             color2: 'bg-purple-300',
@@ -278,26 +313,27 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
             <div className="relative z-10 p-8 h-full flex flex-col">
               <div 
                 ref={previewRef}
-                className={`flex-1 font-noto leading-relaxed prose max-w-none ${colorStyles.text}`}
+                className="flex-1 font-noto leading-relaxed prose max-w-none"
                 style={{
                   fontSize: '16px',
                   lineHeight: '1.6',
-                  '--prose-h1-color': colorStyles.h1.replace('text-', ''),
-                  '--prose-h2-color': colorStyles.h2.replace('text-', ''),
-                  '--prose-h3-color': colorStyles.h3.replace('text-', ''),
-                  '--prose-strong-color': colorStyles.strong.replace('text-', ''),
-                  '--prose-blockquote-border': colorStyles.blockquote.split(' ')[0].replace('border-', ''),
-                  '--prose-blockquote-bg': colorStyles.blockquote.split(' ')[1].replace('bg-', ''),
-                  '--prose-blockquote-color': colorStyles.blockquote.split(' ')[2].replace('text-', ''),
-                  '--prose-code-bg': colorStyles.code.split(' ')[0].replace('bg-', ''),
-                  '--prose-code-color': colorStyles.code.split(' ')[1].replace('text-', '')
+                  color: `rgb(${colorStyles.textColor})`,
+                  '--prose-h1-color': colorStyles.h1Color,
+                  '--prose-h2-color': colorStyles.h2Color,
+                  '--prose-h3-color': colorStyles.h3Color,
+                  '--prose-strong-color': colorStyles.strongColor,
+                  '--prose-blockquote-border': colorStyles.blockquoteBorder,
+                  '--prose-blockquote-bg': colorStyles.blockquoteBg,
+                  '--prose-blockquote-color': colorStyles.blockquoteColor,
+                  '--prose-code-bg': colorStyles.codeBg,
+                  '--prose-code-color': colorStyles.codeColor
                 } as React.CSSProperties}
               />
               
               {/* 签名区域 */}
               <div className="mt-8 text-center">
                 <div className="inline-block px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full shadow-sm">
-                  <span className={`text-sm font-medium font-inter ${colorStyles.text}`}>
+                  <span className="text-sm font-medium font-inter" style={{ color: `rgb(${colorStyles.textColor})` }}>
                     {signature}
                   </span>
                 </div>
@@ -309,4 +345,3 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
     </Card>
   );
 };
-
