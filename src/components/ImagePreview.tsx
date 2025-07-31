@@ -61,6 +61,95 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
     }
   };
 
+  const getBorderScheme = (scheme: string) => {
+    switch (scheme) {
+      case 'mint-green':
+        return {
+          outer: 'border-emerald-300/40',
+          inner: 'border-teal-200/60',
+          accent: 'emerald-400/20',
+          corner: 'border-emerald-500/25'
+        };
+      case 'sunset-orange':
+        return {
+          outer: 'border-orange-300/40',
+          inner: 'border-pink-200/60',
+          accent: 'orange-400/20',
+          corner: 'border-orange-500/25'
+        };
+      case 'ocean-blue':
+        return {
+          outer: 'border-blue-300/40',
+          inner: 'border-cyan-200/60',
+          accent: 'blue-400/20',
+          corner: 'border-blue-500/25'
+        };
+      case 'violet-purple':
+        return {
+          outer: 'border-purple-300/40',
+          inner: 'border-violet-200/60',
+          accent: 'purple-400/20',
+          corner: 'border-purple-500/25'
+        };
+      case 'milk-tea':
+        return {
+          outer: 'border-amber-300/40',
+          inner: 'border-orange-200/60',
+          accent: 'amber-400/20',
+          corner: 'border-amber-500/25'
+        };
+      case 'morandi-gray':
+        return {
+          outer: 'border-gray-300/40',
+          inner: 'border-slate-200/60',
+          accent: 'gray-400/20',
+          corner: 'border-gray-500/25'
+        };
+      case 'champagne-gold':
+        return {
+          outer: 'border-yellow-300/40',
+          inner: 'border-amber-200/60',
+          accent: 'yellow-400/20',
+          corner: 'border-yellow-500/25'
+        };
+      case 'sage-green':
+        return {
+          outer: 'border-emerald-300/40',
+          inner: 'border-green-200/60',
+          accent: 'emerald-400/20',
+          corner: 'border-emerald-500/25'
+        };
+      case 'dusty-rose':
+        return {
+          outer: 'border-rose-300/40',
+          inner: 'border-pink-200/60',
+          accent: 'rose-400/20',
+          corner: 'border-rose-500/25'
+        };
+      case 'midnight-blue':
+        return {
+          outer: 'border-slate-300/40',
+          inner: 'border-blue-200/60',
+          accent: 'slate-400/20',
+          corner: 'border-slate-500/25'
+        };
+      case 'lavender-mist':
+        return {
+          outer: 'border-purple-300/40',
+          inner: 'border-violet-200/60',
+          accent: 'purple-400/20',
+          corner: 'border-purple-500/25'
+        };
+      default: // cherry-blossom
+        return {
+          outer: 'border-pink-300/40',
+          inner: 'border-purple-200/60',
+          accent: 'pink-400/20',
+          corner: 'border-pink-500/25'
+        };
+    }
+  };
+
   const getColorSchemeStyles = (scheme: string) => {
     switch (scheme) {
       case 'mint-green':
@@ -283,6 +372,7 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
   };
 
   const colorStyles = getColorSchemeStyles(colorScheme);
+  const borderScheme = getBorderScheme(colorScheme);
 
   return (
     <Card className="h-full p-6 bg-white/80 backdrop-blur-sm border-0 shadow-lg">
@@ -299,21 +389,21 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
         <div className="flex justify-center">
           <div 
             id="image-content"
-            className={`relative ${getColorSchemeClasses(colorScheme)} rounded-lg shadow-2xl overflow-hidden border-4 border-white/30`}
+            className={`relative ${getColorSchemeClasses(colorScheme)} rounded-lg shadow-2xl overflow-hidden border-4 ${borderScheme.outer}`}
             style={{ width: '400px', minHeight: '500px' }}
           >
             {/* 专业边框装饰 */}
-            <div className="absolute inset-0 border-2 border-black/5 rounded-lg"></div>
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-black/10 to-transparent"></div>
-            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-black/10 to-transparent"></div>
-            <div className="absolute top-0 bottom-0 left-0 w-1 bg-gradient-to-b from-transparent via-black/10 to-transparent"></div>
-            <div className="absolute top-0 bottom-0 right-0 w-1 bg-gradient-to-b from-transparent via-black/10 to-transparent"></div>
+            <div className={`absolute inset-0 border-2 ${borderScheme.inner} rounded-lg`}></div>
+            <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-${borderScheme.accent} to-transparent`}></div>
+            <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-${borderScheme.accent} to-transparent`}></div>
+            <div className={`absolute top-0 bottom-0 left-0 w-1 bg-gradient-to-b from-transparent via-${borderScheme.accent} to-transparent`}></div>
+            <div className={`absolute top-0 bottom-0 right-0 w-1 bg-gradient-to-b from-transparent via-${borderScheme.accent} to-transparent`}></div>
             
             {/* 角落装饰线条 */}
-            <div className="absolute top-4 left-4 w-6 h-6 border-l-2 border-t-2 border-black/15"></div>
-            <div className="absolute top-4 right-4 w-6 h-6 border-r-2 border-t-2 border-black/15"></div>
-            <div className="absolute bottom-4 left-4 w-6 h-6 border-l-2 border-b-2 border-black/15"></div>
-            <div className="absolute bottom-4 right-4 w-6 h-6 border-r-2 border-b-2 border-black/15"></div>
+            <div className={`absolute top-4 left-4 w-6 h-6 border-l-2 border-t-2 ${borderScheme.corner}`}></div>
+            <div className={`absolute top-4 right-4 w-6 h-6 border-r-2 border-t-2 ${borderScheme.corner}`}></div>
+            <div className={`absolute bottom-4 left-4 w-6 h-6 border-l-2 border-b-2 ${borderScheme.corner}`}></div>
+            <div className={`absolute bottom-4 right-4 w-6 h-6 border-r-2 border-b-2 ${borderScheme.corner}`}></div>
             {/* 装饰性背景图案 */}
             <div className="absolute inset-0 opacity-5">
               <div className={`absolute top-10 right-10 w-20 h-20 ${colorStyles.decoration.color1} rounded-full blur-xl`}></div>
