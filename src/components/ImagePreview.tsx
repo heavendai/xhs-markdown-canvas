@@ -299,9 +299,21 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
         <div className="flex justify-center">
           <div 
             id="image-content"
-            className={`relative ${getColorSchemeClasses(colorScheme)} rounded-3xl shadow-2xl overflow-hidden`}
+            className={`relative ${getColorSchemeClasses(colorScheme)} rounded-lg shadow-2xl overflow-hidden border-4 border-white/30`}
             style={{ width: '400px', minHeight: '500px' }}
           >
+            {/* 专业边框装饰 */}
+            <div className="absolute inset-0 border-2 border-black/5 rounded-lg"></div>
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-black/10 to-transparent"></div>
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-black/10 to-transparent"></div>
+            <div className="absolute top-0 bottom-0 left-0 w-1 bg-gradient-to-b from-transparent via-black/10 to-transparent"></div>
+            <div className="absolute top-0 bottom-0 right-0 w-1 bg-gradient-to-b from-transparent via-black/10 to-transparent"></div>
+            
+            {/* 角落装饰线条 */}
+            <div className="absolute top-4 left-4 w-6 h-6 border-l-2 border-t-2 border-black/15"></div>
+            <div className="absolute top-4 right-4 w-6 h-6 border-r-2 border-t-2 border-black/15"></div>
+            <div className="absolute bottom-4 left-4 w-6 h-6 border-l-2 border-b-2 border-black/15"></div>
+            <div className="absolute bottom-4 right-4 w-6 h-6 border-r-2 border-b-2 border-black/15"></div>
             {/* 装饰性背景图案 */}
             <div className="absolute inset-0 opacity-5">
               <div className={`absolute top-10 right-10 w-20 h-20 ${colorStyles.decoration.color1} rounded-full blur-xl`}></div>
